@@ -12,8 +12,6 @@ import AppleScriptKit
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet weak var window: NSWindow!
-
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
