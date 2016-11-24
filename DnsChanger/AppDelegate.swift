@@ -26,35 +26,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
-    func initMenu(data: [String: AnyObject]) {
+    func initMenu(data: [String: [String]]) {
         let menu = NSMenu(title: "DnsChanger")
         
-        let itemDefault = NSMenuItem(title: "Default", action: #selector(setDefaultDns), keyEquivalent: "Default")
+        let itemDefault = NSMenuItem(title: "Default", action: #selector(setDefaultDns), keyEquivalent: "")
         menu.addItem(itemDefault)
         menu.addItem(NSMenuItem.separator())
         
-        if let dns = data["dns"] as? [ AnyObject ] {
+        if let dns = data["dns"] {
             for d  in dns {
-                let itemNew = NSMenuItem(title: (d["name"] as? String)!, action: #selector(setDnsByMenu), keyEquivalent: "")
+                let itemNew = NSMenuItem(title: d, action: #selector(setDnsByMenu), keyEquivalent: "")
                 
                 menu.addItem(itemNew)
             }
         }
         
         menu.addItem(NSMenuItem.separator())
-        let itemQuit = NSMenuItem(title: "Quit", action: #selector(exit), keyEquivalent: "Quit")
+        let itemQuit = NSMenuItem(title: "Quit", action: #selector(exit), keyEquivalent: "")
         menu.addItem(itemQuit)
         
         statusItem.menu = menu
         statusItem.title = "D"
     }
     
-    func getData() -> [String: AnyObject] {
+    func getData() -> [String: [String]] {
         let dataFile = NSHomeDirectory().appending("/dnschanger.json")
         
         if let data = try? Data(contentsOf: URL(fileURLWithPath: dataFile)) {
             do {
-                let obj = try JSONSerialization.jsonObject(with: data as Data, options: .allowFragments) as! [String: AnyObject]
+                let obj = try JSONSerialization.jsonObject(with: data as Data, options: .allowFragments) as! [String: [String]]
                 
                 return obj
             }
@@ -63,11 +63,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
-        return ["service":"Wi-Fi" as AnyObject,
-                "dns": [
-                    ["name": "119.29.29.29", "ip":"119.29.29.29", "selected": false]
-                    ] as AnyObject
-        ]
+        return ["dns": ["119.29.29.29"]]
     }
     
     func setDefaultDns(sneder: AnyObject) {
