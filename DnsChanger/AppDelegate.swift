@@ -121,15 +121,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     private func setDns(dns: String) {
-        let shell = "do shell script \"networksetup -setdnsservers Wi-Fi " + dns + "\""
+        let task = Process()
+        let pipe = Pipe()
         
-        var error: NSDictionary?
+        var params = ["Wi-Fi"]
+        let dnss = dns.characters.split(separator: " ").map(String.init)
+        for _d in dnss {
+            params.append(_d)
+        }
         
-        let appleScript = NSAppleScript.init(source: shell)
-        appleScript?.executeAndReturnError(&error)
+        task.launchPath = "/Library/Application Support/DnsChanger/sysconf_helper"
+        task.arguments = params
+        task.standardOutput = pipe
+        task.standardError = pipe
         
-        if error != nil {
-            print("error: \(error)")
+        task.launch()
+        
+        var errorMsg = ""
+        
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        if let rs = String(data: data, encoding: String.Encoding.utf8) {
+            print(rs)
+//            errorMsg = "Change Dns failed(1)"
+        } else {
+            errorMsg = "Change Dns failed(2)"
+        }
+        
+        if errorMsg != "" {
+            let error = NSAlert()
+            error.messageText = "Error"
+            error.informativeText = errorMsg
+            error.runModal()
         }
     }
     
