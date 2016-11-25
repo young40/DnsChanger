@@ -17,6 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         
+        self.installHelper()
+        
         let data = self.getData()
         
         let dns = self.getDns()
@@ -153,6 +155,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         return dns
+    }
+    
+    private func installHelper() {
+        let path = "/Library/Application Support/DnsChanger/sysconf_helper"
+        
+        if !FileManager.default.fileExists(atPath: path) {
+            let shellPath = Bundle.main.resourcePath! + "/install_helper.sh";
+            
+            var error: NSDictionary?
+            
+            let script = "do shell script \"bash " + shellPath + "\" with administrator privileges"
+            let appleScript = NSAppleScript.init(source: script)
+            appleScript?.executeAndReturnError(&error)
+            if error != nil {
+                print("error: \(error)")
+                
+                let alert = NSAlert()
+                alert.messageText = "Message"
+                alert.alertStyle = NSAlertStyle.warning
+                alert.informativeText = "Helper install failed, Please run DnsChanger AGAIN"
+                alert.runModal()
+                
+                self.exit(sender: self)
+            }
+        }
     }
 }
 
