@@ -12,6 +12,7 @@
 		D504DD0C1DDEC18500177A8A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D504DD0A1DDEC18500177A8A /* MainMenu.xib */; };
 		D580DBB31DE7F8FD006159C9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D580DBB21DE7F8FD006159C9 /* main.swift */; };
 		D580DBB91DE7F95A006159C9 /* sysconf_helper in Resources */ = {isa = PBXBuildFile; fileRef = D580DBB01DE7F8FD006159C9 /* sysconf_helper */; };
+		D580DBBB1DE81914006159C9 /* install_helper.sh in Resources */ = {isa = PBXBuildFile; fileRef = D580DBBA1DE81914006159C9 /* install_helper.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		D504DD0D1DDEC18500177A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D580DBB01DE7F8FD006159C9 /* sysconf_helper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sysconf_helper; sourceTree = BUILT_PRODUCTS_DIR; };
 		D580DBB21DE7F8FD006159C9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D580DBBA1DE81914006159C9 /* install_helper.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = install_helper.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				D504DD081DDEC18500177A8A /* Assets.xcassets */,
 				D504DD0A1DDEC18500177A8A /* MainMenu.xib */,
 				D504DD0D1DDEC18500177A8A /* Info.plist */,
+				D580DBBA1DE81914006159C9 /* install_helper.sh */,
 			);
 			path = DnsChanger;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D580DBBB1DE81914006159C9 /* install_helper.sh in Resources */,
 				D580DBB91DE7F95A006159C9 /* sysconf_helper in Resources */,
 				D504DD091DDEC18500177A8A /* Assets.xcassets in Resources */,
 				D504DD0C1DDEC18500177A8A /* MainMenu.xib in Resources */,
