@@ -121,8 +121,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func setDns(dns: String) {
         let shell = "do shell script \"networksetup -setdnsservers Wi-Fi " + dns + "\""
         
+        var error: NSDictionary?
+        
         let appleScript = NSAppleScript.init(source: shell)
-        appleScript?.executeAndReturnError(nil)
+        appleScript?.executeAndReturnError(&error)
+        
+        if error != nil {
+            print("error: \(error)")
+        }
     }
     
     private func getDns() -> [String] {
