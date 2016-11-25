@@ -1,0 +1,15 @@
+#+TITLE: DnsChanger
+
+* Usage:
+create "dnschanger.json" under your home directory like:
+#+BEGIN_SRC json
+{
+    "dns": [
+        "119.29.29.29",
+        "114.114.114.114"
+    ]
+}
+#+END_SRC
+
+* Source Code:
+please use Xcode 8.1 or above to build.
