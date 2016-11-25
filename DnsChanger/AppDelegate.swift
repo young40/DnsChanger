@@ -54,6 +54,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         menu.addItem(NSMenuItem.separator())
+        
+        let itemUsage = NSMenuItem(title: "Usage", action: #selector(openUsage), keyEquivalent: "")
+        menu.addItem(itemUsage)
+        menu.addItem(NSMenuItem.separator())
+        
         let itemQuit = NSMenuItem(title: "Quit", action: #selector(exit), keyEquivalent: "")
         menu.addItem(itemQuit)
         
@@ -204,6 +209,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.exit(sender: self)
             }
         }
+    }
+    
+    func openUsage(sender: AnyObject) {
+        let url = "https://github.com/young40/DnsChanger"
+        NSWorkspace.shared().open(URL(string: url)!)
     }
 }
 
