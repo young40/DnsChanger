@@ -8,7 +8,7 @@
 
 import Foundation
 
-print("Hello, World!")
+//print("Hello, World!")
 
 var argc = CommandLine.argc
 var argv = CommandLine.arguments
@@ -20,7 +20,7 @@ var argv = CommandLine.arguments
 //
 //argc = Int32(argv.count)
 
-print(argv)
+//print(argv)
 
 if argc < 3 {
     print("arguments not enough")
@@ -34,20 +34,15 @@ for index in 1 ... (argc - 1) {
     params.append(argv[Int(index)])
 }
 
-var dns: [String] = []
+let paramStr = params.joined(separator: " ")
 
-let task = Process()
-let pipe = Pipe()
+var error: NSDictionary?
+    
+let script = "do shell script \"/usr/sbin/networksetup " + paramStr + "\" with administrator privileges"
 
-task.launchPath = "/usr/sbin/networksetup"
-task.arguments = params
-task.standardOutput = pipe
-task.standardError = pipe
+let appleScript = NSAppleScript.init(source: script)
+appleScript?.executeAndReturnError(&error)
 
-task.launch()
-
-let data = pipe.fileHandleForReading.readDataToEndOfFile()
-if let rs = String(data: data, encoding: String.Encoding.utf8) {
-    print("done")
-    print(rs)
+if error != nil {
+    print("error: \(error)")
 }

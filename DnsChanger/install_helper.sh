@@ -9,7 +9,7 @@
 cd `dirname "${BASH_SOURCE[0]}"`
 sudo mkdir -p "/Library/Application Support/DnsChanger/"
 sudo cp sysconf_helper "/Library/Application Support/DnsChanger/"
-sudo chown root:admin "/Library/Application Support/DnsChanger/sysconf_helper"
+sudo chown root:wheel "/Library/Application Support/DnsChanger/sysconf_helper"
 sudo chmod +s "/Library/Application Support/DnsChanger/sysconf_helper"
 
 echo done

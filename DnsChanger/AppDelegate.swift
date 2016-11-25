@@ -141,8 +141,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
         if let rs = String(data: data, encoding: String.Encoding.utf8) {
-            print(rs)
-//            errorMsg = "Change Dns failed(1)"
+            if rs != "" {
+                print(rs)
+                errorMsg = "Change Dns failed(1)"
+            }
         } else {
             errorMsg = "Change Dns failed(2)"
         }
