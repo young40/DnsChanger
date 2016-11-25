@@ -141,7 +141,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let rs = String(data: data, encoding: String.Encoding.utf8) {
             let c = rs[rs.startIndex ... rs.index(rs.startIndex, offsetBy: 0)]
             
-            if let num = Int(c) {
+            if Int(c) != nil {
                 dns = rs.characters.split(separator: "\n").map(String.init)
             }
         }

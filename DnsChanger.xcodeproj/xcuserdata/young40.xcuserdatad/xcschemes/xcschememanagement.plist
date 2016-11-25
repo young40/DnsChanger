@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>sysconf_helper.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>D504DD021DDEC18500177A8A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D580DBAF1DE7F8FD006159C9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
